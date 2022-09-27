@@ -1,0 +1,124 @@
+
+.as_container > div:nth-child(1) {
+   
+    color: white;
+    font-family: "PT Sans", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-align: center;
+
+    background-color: #437111;
+    height:30px;
+  
+  }
+  #as_top{
+     margin: auto;
+  }
+
+ 
+  #as_grow{
+    margin-bottom: -35px;
+    text-decoration: none;
+    color: black;
+    
+  }
+  #as_img{
+      cursor: pointer;
+  }
+  
+ #grow {
+   margin-top: 55px;
+ }
+  
+  .as_navbar {
+    grid-area: b;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background-color: #eeeeea;
+    z-index: 1;
+  }
+  
+  .as_navbar > div:nth-child(1) {
+      /* border: 1px solid green; */
+    height: 100%;
+    width: 20%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  
+  .dropdown {
+    font-family: "PT Sans", serif;
+    font-size: 17px;
+    height: 100%;
+    margin-top: 18%;
+    /* position: relative; */
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .dropdown i {
+    right: -8px;
+    font-size: 18px;
+    color: #bbb;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: 43px;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    color: #6d6d6d;
+    font-family: "PT Sans", Arial, Helvetica, sans-serif;
+  }
+  
+
+  
+  .dropdown-content a:hover {
+    color: #98cb4c;
+    padding-left: 10%;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  #as_accountinfo {
+    width: 150px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  #as_accountinfo i {
+    font-size: 20px;
+    cursor: pointer;
+    position: relative;
+    /* color: red; */
+  }
+  
+   #as_searchform {
+    display: none;
+    position: absolute;
+    top: 70px; 
+    right: 230px;
+    background-color: #f7f7f7;
+    z-index: 1;
+    padding: 20px;
+    width: 295px;
+    box-shadow: 0 0 2px rgb(0 0 0 / 10%);
+  } 
+  

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/24c494a6b6.js" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+    <style>
+        #div_qty {
+            /* border: solid red; */
+            font-size: 17px;
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            margin: 10px;
+            width: 94%;
+            height: 45px;
+            padding: 10px;
+            border: 2px solid #000;
+            background-color: transparent;
+            color: #000;
+
+        }
+
+        .main {
+            width: 100%;
+            border: 1px solid black;
+        }
+
+        .widget-heading {
+            margin-bottom: 20px;
+            padding: 28px 20px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        .widget-title {
+            letter-spacing: .6px;
+            font-size: 24px;
+            vertical-align: middle;
+            display: inline-block;
+            color: #fff;
+            text-transform: uppercase;
+
+        }
+
+        .widget-close {
+            text-decoration: none;
+            color: #fff;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: .6px;
+            line-height: 35px;
+            position: relative;
+            cursor: pointer;
+            padding-right: 21px;
+        }
+
+        .cart-widget-side .widget_shopping_cart {
+            padding: 0 20px 20px;
+        }
+
+        #pimg {
+            height: auto;
+            vertical-align: middle;
+            width: 200px;
+            height: 200px;
+
+        }
+
+        #main {
+            display: flex;
+            width: 100%;
+        }
+
+        #name {
+            margin-left: 20px;
+            display: flex;
+            width: 400px;
+            font-size: 20px;
+            justify-content: space-between;
+            /* border: solid red; */
+        }
+
+        /* #name_div {
+            display: flex;
+            width: 200px;
+            border: 1px solid black; 
+        } */
+
+        #icon:hover {
+            cursor: pointer;
+
+        }
+
+        #price_div {
+            margin-left: -40px;
+            margin-top: 15px;
+            display: flex;
+            font-size: 20px;
+            justify-content: space-evenly;
+            /* border: solid red; */
+        }
+
+        #plus,
+        #minus {
+            border: 1px solid #e0e0e0;
+            color: #848484;
+            width: 20px;
+            background-color: #f9f9f9;
+            transition: .2s;
+            height: 20px;
+        }
+
+        #plus:hover {
+            cursor: pointer;
+        }
+
+        #minus:hover {
+            cursor: pointer;
+        }
+
+        #pro_price {
+            color: #848484;
+            text-align: center;
+            width: 40px;
+            padding-right: 10px;
+            appearance: textfield;
+            height: 20px;
+            margin-top: 0;
+        }
+
+        #num {
+            margin-top: 0;
+        }
+
+        #lbl {
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        #dis {
+            margin: auto;
+            text-align: center;
+            width: 80%;
+        }
+
+        #cong {
+            background-color: rgb(171, 8, 49);
+            color: #fff;
+            border-radius: 5px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="widget-heading">
+            <h3 class="widget-title">Shopping cart</h3>
+            <a href="index.html" class="widget-close">close</a>
+        </div>
+        <div class="widget shopify widget_shopping_cart">
+
+            <div class="widget_shopping_cart_content">
+                <ul class="cart_list product_list_widget "></ul>
+                <div id="tt"></div>
+                <!-- end product list -->
+            </div><a href="#" style="width: 100%;" class="button widget-close wc-forward">Continue Shopping</a>
+        </div>
+        <div id="tt"></div>
+        <div id="cong" style="display: none;">
+            <p>CONGRATULATIONS! YOU'VE GOT FREE SHIPPING</p>
+        </div>
+        <p id="dis">No tax on fresh fruits. Free shipping above Rs. 350.</p>
+        <div id="btns">
+            <button class="btn" onclick="chkout()">CHECK OUT</button>
+            <button class="btn" onclick="cont()">CONTINUE SHOPPING</button>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    let cartData = JSON.parse(localStorage.getItem("cartData"))
+    console.log(cartData)
+    let sumarr = []
+    let qtyarr = []
+    let sss = 144;
+
+    cartData.map(function (elem, index) {
+        let box = document.createElement("li");
+        box.id = "main"
+
+        let img_div = document.createElement("div")
+        let pro_img = document.createElement("img");
+        pro_img.src = elem.image;
+        pro_img.setAttribute("id", "pimg")
+        img_div.append(pro_img)
+
+
+        let rest_div = document.createElement("div")
+        let name_div = document.createElement("div")
+        name_div.id = "name"
+        let pro_name = document.createElement("p");
+        pro_name.innerText = elem.name;
+        pro_name.id = "nametxt"
+
+        let icon = document.createElement("i");
+        icon.setAttribute("class", "fa-solid fa-xmark")
+        icon.addEventListener("click", function () {
+            rmvfun(index)
+        });
+        icon.id = "icon"
+        name_div.append(pro_name, icon);
+
+        let price_div = document.createElement("div")
+
+
+        let pricespan = document.createElement("span")
+        pricespan.innerText = "x ₹"
+        let pro_price = document.createElement("p");
+        pro_price.innerText = elem.price;
+        pro_price.id = "pro_price"
+
+
+        let minus = document.createElement("btn")
+        minus.innerHTML = "-"
+        minus.id = "minus"
+        minus.addEventListener("click", function (event) {
+            event.preventDefault();
+            document.querySelector("#tt").innerHTML = null
+
+            if (qtyy > 1) {
+                qtyy--;
+                num.innerText = qtyy;
+                x = Number(elem.price);
+                sss = sss - x;
+                localStorage.setItem("total", JSON.stringify(sss))
+                document.querySelector("#tt").append("Total" + sss)
+                total.innerHTML = x;
+            }
+            else {
+                qtyy = 1;
+            }
+            if (sss < 350) {
+                document.querySelector("#cong").style.display = "none"
+            }
+
+        })
+
+        let x = elem.price;
+        let qtyy = 1;
+
+
+        let num = document.createElement("p")
+        num.innerText = qtyy;
+        num.id = "num";
+
+
+        let plus = document.createElement("btn")
+        plus.innerHTML = "+"
+        plus.id = "plus"
+        plus.addEventListener("click", function (event) {
+            event.preventDefault();
+            document.querySelector("#tt").innerHTML = null
+            qtyy++;
+            num.innerText = qtyy;
+            x = Number(elem.price);
+            sss = sss + x;
+            localStorage.setItem("total", JSON.stringify(sss))
+            document.querySelector("#tt").append("Total" + sss)
+
+            total.innerHTML = "Total:" + x;
+            if (sss >= 350) {
+                document.querySelector("#cong").style.display = "block"
+            }
+
+        })
+
+
+        price_div.append(minus, num, plus, pricespan, pro_price)
+        price_div.id = "price_div"
+        let qty_div = document.createElement("div")
+        qty_div.id = "div_qty"
+        qty_div.style.display = "flex"
+        let qty = document.createElement("p")
+        qty.innerHTML = "250";
+
+        let total_div = document.createElement("div")
+        total_div.style.display = "flex";
+        let totalLabel = document.createElement("label")
+        totalLabel.innerText = "SubTotal";
+        totalLabel.id = "lbl"
+        let total = document.createElement("p");
+        total.innerText = x;
+        sss = sss + x - 144;
+        localStorage.setItem("total", JSON.stringify(sss))
+
+
+
+        total_div.append(totalLabel, total)
+
+        qty_div.append(qty)
+        rest_div.append(name_div, qty_div, price_div)
+
+
+        // btn.addEventListener("click", function(){
+        //     removeItem(elem,index)
+        // })
+
+        box.append(img_div, rest_div);
+
+        document.querySelector(".cart_list").append(box);
+        // document.querySelector("#t").append(total_div)
+
+    });
+    if (sss >= 350) {
+        document.querySelector("#cong").style.display = "block"
+    }
+
+    localStorage.setItem("total", JSON.stringify(sss))
+
+    function rmvfun(index) {
+        cartData.splice(index, 1)
+        localStorage.setItem("cartData", JSON.stringify(cartData))
+        window.location.reload();
+    }
+    document.querySelector("#tt").append(sss)
+
+    function chkout() {
+        window.location.href = "checkout.html"
+    }
+
+    function cont() {
+        window.location.href = "index.html"
+    }
+</script>

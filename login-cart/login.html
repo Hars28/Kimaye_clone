@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/24c494a6b6.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        
+.main,.register-question {
+    width: 100%;
+    border: 1px solid black;
+}
+.header{
+    margin-bottom: 20px;
+    padding: 28px 20px;
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    
+}
+.header-title{
+    letter-spacing: .6px;
+    font-size: 24px;
+    vertical-align: middle;
+    display: inline-block;
+    color: #fff;
+    text-transform: uppercase;
+    
+}
+.widget-close{
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: .6px;
+    line-height: 35px;
+    position: relative;
+    cursor: pointer;
+    padding-right: 21px;
+}
+.login-form,#register_side{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+.input_div{
+    margin: 10px;
+    display:flex;
+    flex-direction: column;
+}
+.logemail,#FirstNamereg,#LastNamereg,.logpass,.emailreg,.passreg,.email{
+    height: 43px;
+    font-family: PT Sans, Arial, Helvetica, sans-serif;
+    color: #4c4c4c;
+    font-size: 14px;
+    padding-left: 5px;
+}
+.required{
+    color: red;
+}
+.lost_password{
+    margin: 10px;
+    display: flex;
+
+}
+.forget{
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+    margin-left: 5px;
+}
+.forget:hover{
+    cursor: pointer;
+    color: greenyellow;
+}
+#icon1:hover{
+    color: greenyellow;
+    cursor: pointer;
+}
+
+.regbtn,.cancel,.resbtn,.logbtn{
+    margin: 10px;
+    width: 94%;
+    height: 45px;
+    padding: 10px;
+    border: 2px solid #000;
+    background-color: transparent;
+    color: #000;
+
+}
+.cancel:hover{
+    background-color: #000;
+    color: #fff;
+}
+.resbtn:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+.icon{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+#icon2{
+   font-size: 60px;
+   color: gainsboro;
+}
+#icon1{
+    color: #000;
+}
+.createspan{
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.c1{
+    margin-top:10px ;
+    display: flex;
+    justify-content: center;
+}
+.txt{
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-family: PT Sans, Arial, Helvetica, sans-serif;
+    color: #4c4c4c;
+    font-size: 14px;
+    text-align: center;
+}
+.reg,.log{
+    
+    margin: auto;
+    width: 45%;
+    padding: 10px;
+    border: 2px solid #000;
+    background-color: transparent;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+}
+.reg:hover{
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+}
+.log:hover{
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+}
+.btn_div1{
+    display: flex;
+    justify-content: center;
+}
+.btn_div2{
+    display: flex;
+    justify-content: center;
+
+}
+    </style>
+</head>
+<body>
+    <div class="main">
+
+
+
+        <div class="header">
+           <h3 class="header-title">sign in</h3>
+           <a href="index.html" class="widget-close">close</a>
+        </div>
+
+
+
+        <div class="login-form">
+           <form id="customer_login_side" >
+                <div class="input_div">
+                 <label>Email address <span class="required">*</span></label>
+                 <input type="text" class="logemail" id="usernameside" value="">
+                 </div>
+            <div class="input_div">
+                    <label>Password <span class="required">*</span></label>
+                    <input  type="password" class="logpass" id="passwordside">
+            </div>
+            <div class="lost_password">
+                    <a href="#" class="forget" onclick="showRecoverPasswordFormSide()"><i class="fa-solid fa-bullseye" id="icon1"></i> Forgot your password?</a>
+            </div>
+            <div class="login">
+                 <input type="submit" class="logbtn"  value="Login">
+            </div>
+        </form>
+            <div class="social-login">
+                   <iframe id="social_login_frame" title="Social Login Frame" src="https://social-login.oxiapps.com/widget?site=kimaye-store.myshopify.com&amp;vt=928356&amp;parenturl=https://kimaye.com/"
+                   style="width:100%;max-width:100%;padding-top:0px;margin-bottom:5px;border:0px;height:96px;" scrolling="no">
+                </iframe>
+            </div>
+        </div>
+       
+
+
+
+        <div class="signin-form" style="display: none;">
+            <div class="social-login">
+                <iframe id="social_login_frame" title="Social Login Frame" src="https://social-login.oxiapps.com/widget?site=kimaye-store.myshopify.com&amp;vt=928356&amp;parenturl=https://kimaye.com/"
+                style="width:100%;max-width:100%;padding-top:0px;margin-bottom:5px;border:0px;height:96px;" scrolling="no">
+             </iframe>
+             </div>
+            <form id="register_side" onsubmit="signfun()">
+                <div class="input_div">
+                    <label for="FirstNamereg">First Name</label>
+                    <input type="text" id="FirstNamereg" autofocus="">
+                </div>
+                <div class="input_div">
+                    <label for="LastNamereg">Last Name</label>
+                    <input type="text" id="LastNamereg" autofocus="">
+                </div>
+                <div class="input_div">
+                    <label for="email">Email address <span class="required">*</span></label>
+                    <input type="text" class="emailreg" autofocus="">
+                </div>
+                <div class="input_div">
+                    <label for="pass">Password <span class="required">*</span></label>
+                    <input type="password" class="passreg" autofocus="">
+                </div>
+             <div id="signin" >          
+                <input type="submit" class="regbtn" value="Register">
+             </div></form>
+        </div>
+    
+
+
+
+        <div id="recover_passwordside" style="display: none">
+            <form method="get" action="/account/recover" id="reset_password_side" accept-charset="UTF-8" class="shopify-ResetPassword lost_reset_password">
+                <input type="hidden" name="form_type" value="recover_customer_password">
+            <p class="lost_para">Lost your password? Please enter your email address. You will receive a link to create a new password via email.</p>
+            <div class="input_div">
+                <label for="email">Email address <span class="required">*</span></label>
+                <input type="text" class="email" autofocus="">
+            </div>
+         <div class="clear"></div>
+         <p class="shopify-form-row form-row">
+            <input type="submit" class="resbtn" value="Reset Password">
+            <button type="button" onclick="hideRecoverPasswordFormSide();" class="cancel">Cancel</button>
+         </p></form></div>
+    
+
+
+
+
+        <div class="register-question">
+            <div class="icon"><i class="fa-solid fa-user" id="icon2"></i></div>
+            <div class="c1">
+           <span class="createspan">No account yet?</span>
+           </div>
+           <p class="txt">Welcome to Kimaye! Help us with a few details to know you better as you take the journey of enjoying our safe and tasty fruits.</p>
+           <div class="btn_div1"><button class="reg"  id="hideFormLogin" onclick="hideFormLogin();">Create An Account</a></div>
+           <div class="btn_div2" style="display: none;"><button class="log"  id="showFormLogin" onclick="showFormLogin();">Login</a></div>
+
+        </div>
+     </div>
+</body>
+</html>
+    <script>
+        document.querySelector("#customer_login_side").addEventListener("submit",logfun)
+        function logfun(){
+            event.preventDefault()
+            let regarr=JSON.parse(localStorage.getItem("regdata"))||[]
+            
+            let email=document.querySelector(".logemail").value;
+            let pass=document.querySelector(".logpass").value;
+            console.log(regarr,email,pass)
+            if(check(regarr,email,pass)===true){
+               window.location.href="index.html"
+            }
+            else{
+                alert("Wrong Credentials!")
+            }
+            
+
+       function check(arr,mail,pass){
+           for(let i=0; i<arr.length; i++){
+               if(mail!=arr[i].email && pass!=arr[i].pass){
+                   return false
+               }
+               else{
+                   return true
+                   break;
+               }
+           }
+       }
+        }
+        function signfun(){
+            event.preventDefault()
+            let regarr=JSON.parse(localStorage.getItem("regdata"))||[]
+            console.log(regarr)
+            let regobj={
+                fname : document.querySelector("#FirstNamereg").value,
+                lname : document.querySelector("#LastNamereg").value,
+                email : document.querySelector(".emailreg").value,
+                pass : document.querySelector(".passreg").value,
+            }
+            
+           regarr.push(regobj)
+            console.log(regarr)
+            localStorage.setItem("regdata",JSON.stringify(regarr))
+            window.location.href="index.html"
+        }
+//   /*
+//     Show/hide the recover password form when requested.
+//   */
+  function showRecoverPasswordFormSide() {
+    document.querySelector('#recover_passwordside').style.display = 'block';
+    document.querySelector('.login-form').style.display='none';
+    document.querySelector('.btn_div2').style.display='flex';
+    document.querySelector('.btn_div1').style.display='none';
+  }
+
+  function hideRecoverPasswordFormSide() {
+    document.querySelector('#recover_passwordside').style.display = 'none';
+    document.querySelector('.login-form').style.display = 'block';
+    document.querySelector('.btn_div2').style.display='none';
+    document.querySelector('.btn_div1').style.display='flex';
+  }
+  function hideFormLogin() {
+    document.querySelector('.signin-form').style.display = 'block';
+    document.querySelector('.login-form').style.display='none';
+    // document.querySelector('#showFormLogin').style.display = 'none';
+    // document.querySelector('#hideFormLogin').style.display='inline-block';
+    document.querySelector('.btn_div2').style.display='flex';
+    document.querySelector('.btn_div1').style.display='none';
+
+  }
+
+  function showFormLogin() {
+    document.querySelector('.signin-form').style.display = 'none';
+    document.querySelector('.login-form').style.display = 'block';
+    document.querySelector('#hideFormLogin').style.display = 'inline-block';
+    document.querySelector('#showFormLogin').style.display='none';
+    document.querySelector('.btn_div2').style.display='none';
+    document.querySelector('.btn_div1').style.display='flex';
+  }
+  // Allow deep linking to the recover password form
+  //if (window.location.hash == '#recover') { showRecoverPasswordForm() }
+
+  // reset_success is only true when the reset form is
+  </script>
